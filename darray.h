@@ -207,6 +207,8 @@ DINLINE void darray_remove_impl(size_t *block, size_t index, size_t amount) {
 
 #define darray_clear(array) darray_set_field_impl(array, DARRAY_TAG_COUNT_, 0)
 
+#define darray_last(array) ((array) + darray_count(array) - 1)
+
 #define darray_resize(array, count)                                            \
   do {                                                                         \
     (array) = darray_resize_impl((size_t *)(array), count);                    \
@@ -224,8 +226,6 @@ DINLINE void darray_remove_impl(size_t *block, size_t index, size_t amount) {
   } while (0)
 
 #define darray_pop(array) darray_pop_impl((size_t *)(array))
-
-#define darray_last(array) ((array) + darray_count(array) - 1)
 
 #define darray_insert(array, index, value)                                     \
   do {                                                                         \
